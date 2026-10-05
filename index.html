@@ -46,6 +46,9 @@ h1{font-weight:900;font-size:clamp(32px,7.5vw,54px);letter-spacing:-.02em;text-w
 .hero p.sub{margin-top:14px;max-width:34em;color:#C4D0DE;font-family:'Newsreader',serif;font-size:17px;position:relative}
 .facts{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:20px;position:relative;font-family:'Bricolage Grotesque',sans-serif;font-size:14px}
 .facts span{display:inline-flex;align-items:center;gap:6px;color:#DCE5F0}
+.hero-flow{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.15);font-family:'Bricolage Grotesque',sans-serif;
+  font-size:12.5px;font-weight:600;color:#AEBCCC;position:relative;letter-spacing:.01em}
+.hero-flow i{font-style:normal;color:var(--gold);margin:0 2px}
 main{padding-top:6px}
 section{padding:40px 0 6px;scroll-margin-top:14px}
 .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
@@ -104,9 +107,52 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
 .tabbar button .tb-label{font-size:9.5px;font-weight:700;letter-spacing:.01em;line-height:1.1}
 .tabbar button.active{color:var(--gold)}
 .tabbar button:active{opacity:.6}
+.criticalbar{position:sticky;top:0;z-index:40;background:var(--gold);color:#241A05}
+.cb-inner{max-width:820px;margin:0 auto;padding:7px 20px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;
+  font-family:'Bricolage Grotesque',sans-serif;font-size:12.5px;font-weight:700}
+.cb-inner a{color:#241A05;text-decoration:none}
+.cb-sep{opacity:.5}
+.idxbtn{position:fixed;right:14px;z-index:45;top:calc(14px + env(safe-area-inset-top,0px));background:rgba(20,28,40,.55);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);color:#EAF0F7;border:1px solid rgba(255,255,255,.25);
+  border-radius:999px;width:40px;height:40px;font-size:17px;cursor:pointer}
+.idxpanel{position:fixed;inset:0;z-index:60;display:none}
+.idxpanel.open{display:block}
+.idxpanel .scrim{position:absolute;inset:0;background:rgba(10,15,25,.55)}
+.idxpanel .sheet{position:absolute;left:0;right:0;bottom:0;background:var(--card);border-radius:18px 18px 0 0;
+  padding:10px 10px calc(14px + env(safe-area-inset-bottom,0px));max-width:820px;margin:0 auto;
+  box-shadow:0 -4px 24px rgba(0,0,0,.2)}
+.idxpanel .handle{width:36px;height:4px;border-radius:2px;background:var(--line);margin:6px auto 10px}
+.idxpanel a{display:block;padding:12px 16px;font-family:'Fraunces',serif;font-size:17px;color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--line)}
+.idxpanel a:last-child{border-bottom:none}
+.daynav{display:flex;justify-content:space-between;margin-top:22px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px}
+.daynav a{text-decoration:none}
 </style>
 </head>
 <body>
+
+<div class="criticalbar" id="criticalbar">
+  <div class="cb-inner">
+    <a href="tel:+34975040018">📞 Hotel 975 04 00 18</a>
+    <span class="cb-sep">·</span>
+    <span>⏰ Vuelta dom, salir máx. 16:00</span>
+  </div>
+</div>
+
+<button class="idxbtn" id="idxbtn" type="button" aria-label="Índice">☰</button>
+<div class="idxpanel" id="idxpanel">
+  <div class="scrim" id="idxscrim"></div>
+  <div class="sheet">
+    <div class="handle"></div>
+    <a href="#sabado">Sábado 10</a>
+    <a href="#domingo">Domingo 11</a>
+    <a href="#reservas">Reservas y alojamiento</a>
+    <a href="#consejos">Consejos prácticos</a>
+    <a href="#foto">Tips de fotografía</a>
+    <a href="#saber-mas">Saber más</a>
+    <a href="#antes">Antes de ir</a>
+  </div>
+</div>
 
 <header class="hero">
   <div class="stars"></div>
@@ -119,6 +165,7 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
       <span>📍 Muriel Viejo, Soria</span>
       <span>🚗 Desde Madrid</span>
     </div>
+    <div class="hero-flow">Madrid <i>→</i> Burgo de Osma <i>→</i> Calatañazor <i>→</i> Fuentona <i>→</i> Hotel Muriel <i>→</i> Cañón Río Lobos <i>→</i> Madrid</div>
   </div>
 </header>
 
@@ -149,6 +196,7 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
     <li class="key"><span class="t">Tras la cena</span><h3 id="noche">Observación astronómica</h3><span class="tags"><span class="tag foto">fotografía</span></span>
       <p>Hora por confirmar con el hotel. La luna nueva cae prácticamente ese día, así que el cielo será oscuro si no hay nubes. A esa altura la noche es fría: puede rondar los 0-5 °C.</p></li>
   </ol>
+  <div class="daynav"><span></span><a href="#domingo">Domingo 11 →</a></div>
 </section>
 
 <section id="domingo">
@@ -168,6 +216,7 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
     <li class="key"><span class="t">16:00</span><h3>Salida hacia Madrid</h3><span class="tags"><span class="tag traslado">traslado</span></span>
       <p>Llegada hacia las 18:30. Mejor no salir más tarde: el regreso del puente puede cargar la A-1.</p></li>
   </ol>
+  <div class="daynav"><a href="#sabado">← Sábado 10</a><span></span></div>
 </section>
 
 <section id="reservas">
@@ -188,21 +237,8 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
   <p class="note">Números de reserva: dato no especificado.</p>
 </section>
 
-<section id="flujo">
-  <div class="sec-head"><span class="num">iv</span><h2>Flujo del viaje</h2><span class="rule"></span></div>
-  <div class="flow">
-    <span class="node">Madrid</span><span class="arrow">→</span>
-    <span class="node">Burgo de Osma</span><span class="arrow">→</span>
-    <span class="node">Calatañazor</span><span class="arrow">→</span>
-    <span class="node">Fuentona</span><span class="arrow">→</span>
-    <span class="node">Hotel Muriel</span><span class="arrow">→</span>
-    <span class="node">Cañón Río Lobos</span><span class="arrow">→</span>
-    <span class="node">Madrid</span>
-  </div>
-</section>
-
 <section id="consejos">
-  <div class="sec-head"><span class="num">v</span><h2>Consejos prácticos</h2><span class="rule"></span></div>
+  <div class="sec-head"><span class="num">iv</span><h2>Consejos prácticos</h2><span class="rule"></span></div>
   <div class="cols3">
     <div class="box"><h3>Clima</h3><p style="margin:0;color:var(--muted)">A 1.100 m, noches de octubre frías (0-5 °C). Días templados. Mirar previsión de nubes 2-3 días antes, clave para la observación.</p></div>
     <div class="box"><h3>Transporte</h3><p style="margin:0;color:var(--muted)">Coche propio; toda la ruta es por carretera convencional y autovía. Repostar antes de salir de la A-11.</p></div>
@@ -214,7 +250,7 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
 </section>
 
 <section id="foto">
-  <div class="sec-head"><span class="num">vi</span><h2>Tips de fotografía</h2><span class="rule"></span></div>
+  <div class="sec-head"><span class="num">v</span><h2>Tips de fotografía</h2><span class="rule"></span></div>
   <div class="cols">
     <div class="box"><h3>Luz y paisaje</h3>
       <ul>
@@ -242,7 +278,7 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
 </section>
 
 <section id="saber-mas">
-  <div class="sec-head"><span class="num">vii</span><h2>Saber más</h2><span class="rule"></span></div>
+  <div class="sec-head"><span class="num">vi</span><h2>Saber más</h2><span class="rule"></span></div>
   <details>
     <summary>El Burgo de Osma</summary>
     <div class="inside">Antigua ciudad episcopal con una catedral gótica del XIII y un casco histórico porticado. Fue sede de un obispado desde la Edad Media y conserva la Universidad de Santa Catalina, activa hasta el siglo XX.
@@ -266,7 +302,7 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
 </section>
 
 <section id="antes">
-  <div class="sec-head"><span class="num">viii</span><h2>Antes de ir</h2><span class="rule"></span></div>
+  <div class="sec-head"><span class="num">vii</span><h2>Antes de ir</h2><span class="rule"></span></div>
   <div class="cols">
     <div class="box">
       <h3>Pendiente</h3>
@@ -294,19 +330,6 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
   </div>
 </section>
 
-<section id="notas">
-  <div class="sec-head"><span class="num">ix</span><h2>Notas rápidas</h2><span class="rule"></span></div>
-  <div class="box">
-    <ul>
-      <li><strong>Hotel:</strong> 975 04 00 18 — cena 21:00, check-in desde 18:30</li>
-      <li><strong>Tinto y Leña:</strong> 975 36 08 66 — sáb 13:30</li>
-      <li><strong>Balcón del Cañón:</strong> 975 36 35 76 — dom 13:30</li>
-      <li><strong>Salida límite domingo:</strong> 16:00, por el tráfico del puente</li>
-      <li><strong>Anochecer sábado:</strong> ≈19:40 — la Fuentona antes de esa hora</li>
-    </ul>
-  </div>
-</section>
-
 </div></main>
 <footer><div class="wrap">Los tiempos de coche son estimaciones: compruébalos en el navegador el día antes. · Muriel Viejo, octubre 2026</div></footer>
 
@@ -319,6 +342,15 @@ footer{padding:30px 0 20px;color:var(--muted);font-size:14px;text-align:center}
 </nav>
 
 <script>
+(function(){
+  var idxbtn=document.getElementById('idxbtn');
+  var idxpanel=document.getElementById('idxpanel');
+  var idxscrim=document.getElementById('idxscrim');
+  function close(){ idxpanel.classList.remove('open'); }
+  idxbtn.addEventListener('click',function(){ idxpanel.classList.add('open'); });
+  idxscrim.addEventListener('click',close);
+  idxpanel.querySelectorAll('a').forEach(function(a){ a.addEventListener('click',close); });
+})();
 (function(){
   var buttons=document.querySelectorAll('.tabbar button[data-target]');
   var sections=Array.prototype.map.call(buttons,function(b){return document.getElementById(b.getAttribute('data-target'));});
